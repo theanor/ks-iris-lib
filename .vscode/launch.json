@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "objectscript",
+      "request": "attach",
+      "name": "ObjectScript Attach",
+      "processId": "${command:PickProcess}",
+      "system": true
+    },
+    {
+      "type": "objectscript",
+      "request": "launch",
+      "name": "Editor test class",
+      "program": "##class(%UnitTest.Manager).DebugRunTestCase(\"\", $replace($replace($replace(\"${relativeFile}\",\"test\\\",\"\"),\".cls\",\"\"),\"\\\",\".\"), \"/debug=1/recursive=0\")"
+    },
+    {
+      "type": "objectscript",
+      "request": "launch",
+      "name": "Specific test class",
+      "program": "##class(%UnitTest.Manager).DebugRunTestCase(\"\",\"test.ut.ks.lib.hl7.UtilsTest\", \"/debug=1/recursive=0\")"
+    },
+    {
+      "type": "objectscript",
+      "request": "launch",
+      "name": "Selected test class",
+      "program": "##class(%UnitTest.Manager).DebugRunTestCase(\"\",\"${selectedText}\", \"/debug=1/recursive=0\")"
+    }    
+  ]
+}

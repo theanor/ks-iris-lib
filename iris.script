@@ -1,0 +1,17 @@
+ zn "%SYS"
+ Do ##class(Security.Users).UnExpireUserPasswords("*")
+
+ s nameSpace = "USER"
+ d ##class(%Library.EnsembleMgr).EnableNamespace(nameSpace)
+ 
+ s ^SYS("Security","CSP","AllowPrefix","/csp/healthshare/dev/","%UnitTest.")=1
+ 
+ s $namespace = nameSpace
+
+ s ^RepositoryRoot="/irisrun/repo"  
+ s ^UnitTestResourcesRoot=^RepositoryRoot_"/resource/test"
+ s ^UnitTestRoot=^RepositoryRoot_"/test"
+
+ zpm "load /irisrun/repo -v":1:1
+
+ halt

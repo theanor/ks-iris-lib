@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25">
+  <Document name="ks-lib.ZPM">
+    <Module>
+      <Name>ks-lib</Name>
+      <Version>1.0.0</Version>
+      <Description>Keen Solutions common utilities library</Description>
+      <Author>
+        <Person>Robert Barbiaux</Person>
+        <Organization>Keen Solutions</Organization>
+        <CopyrightDate>2024</CopyrightDate>
+        <License>MIT</License>
+      </Author>
+      <Packaging>module</Packaging>
+      <SystemRequirements Version=">=2023.1" Interoperability="enabled" />
+      <Resource Name="ks.PKG"/>
+      <SourcesRoot>src</SourcesRoot>
+      <UnitTest Name="/test/" Package="ut" Phase="test"/>
+    </Module>
+  </Document>
+</Export>
