@@ -8,7 +8,8 @@ jobs:
 
     steps:
     - name: Execute ObjectScript Quality Analysis
-      run: |
+      run: |        
+        sudo cp "${{ github.action_path }}/.github/certificates/*crt" /usr/local/share/ca-certificates/
         sudo update-ca-certificates
         wget https://raw.githubusercontent.com/litesolutions/objectscriptquality-jenkins-integration/master/iris-community-hook.sh
         sh ./iris-community-hook.sh
