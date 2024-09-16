@@ -1,4 +1,4 @@
-Class ks.lib.hl7.ba.FileOutboundAdapter Extends ks.lib.file.ba.OutboundAdapter
+Class ks.lib.hl7.ba.FileOutboundAdapter Extends ks.lib.file.ba.UNCOutboundAdapter
 {
 
 Method CreateFilename(pFileName As %String, pSpec As %String, pIsVMS As %Boolean, pDirectory As %String, pLocal As %Boolean) As %String
