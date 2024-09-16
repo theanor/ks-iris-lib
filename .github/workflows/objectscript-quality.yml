@@ -7,8 +7,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v4
     - name: Execute ObjectScript Quality Analysis
-      run: |
+      run: |        
+        sudo cp /home/runner/work/ks-iris-lib/ks-iris-lib/.github/certificates/*crt /usr/local/share/ca-certificates/
         sudo update-ca-certificates
         wget https://raw.githubusercontent.com/litesolutions/objectscriptquality-jenkins-integration/master/iris-community-hook.sh
         sh ./iris-community-hook.sh
