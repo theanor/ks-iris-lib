@@ -5,6 +5,10 @@ Parameter PRODUCTION = "test.ut.ks.lib.archive.Production";
 
 Parameter IGNOREPRODUCTIONERRORS = 1;
 
+Method TestDummy()
+{
+}
+
 Method OnBeforeAllTests() As %Status
 {
     #Dim sc as %Status = $$$OK
