@@ -6,8 +6,8 @@ ClassMethod EnableRedirection(stream As %Stream.Object) As %Status
     #Dim sc as %Status
     #Dim ex as %Exception.AbstractException
 
-    #Dim %outputStream
-    #Dim savedIO,savedMnemonic,savedState as %String
+    #Dim %outputStream as %Stream.Object
+    #Dim %savedIO,%savedMnemonic,%savedState as %String
     
     s sc = $$$OK
     try {
