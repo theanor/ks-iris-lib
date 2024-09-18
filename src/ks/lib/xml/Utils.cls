@@ -90,7 +90,6 @@ ClassMethod ImportClassesFromXData(xdataClassName As %Dictionary.Classname, xdat
 {
   
   #Dim ex as %Exception.AbstractException
-  #Dim result as %XML.Adaptor
 
   #Dim xdata as %Dictionary.CompiledXData
   #Dim data as %Stream.Object
@@ -161,7 +160,7 @@ ClassMethod ImportClassesFromStream(baseClassName As %String, stream As %Stream.
       }
     }    
     $$$TOE(sc,reader.OpenStream(stream))
-    s found = reader.Next(.result,.sc,namespace)
+    d reader.Next(.result,.sc,namespace)
     $$$TOE(sc,sc)  
   }
   catch (ex) {
