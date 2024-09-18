@@ -5,8 +5,6 @@ Method OnMessage(pRequest As Ens.StreamContainer, Output pResponse As %Persisten
 {
     #Dim sc as %Status = $$$OK
     #Dim ex as %Exception.AbstractException
-
-    #Dim fileName as %String
     
     try {
         $$$TOE(sc,##super(pRequest,.pResponse))
@@ -14,7 +12,7 @@ Method OnMessage(pRequest As Ens.StreamContainer, Output pResponse As %Persisten
     } catch (ex) {
       s sc = ex.AsStatus()
     }
-    q sc
+    return sc
 }
 
 }
