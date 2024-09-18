@@ -65,7 +65,6 @@ Method ExportToStringFixed(Output line As %String) As %Status [ CodeMode = objec
   #Dim sc as %Status
   #Dim ex as %Exception.AbstractException
 
-  #Dim i as %Integer
   #Dim props as %Dictionary.CompiledProperty
   #Dim prop as %Dictionary.CompiledProperty
   #Dim curIndex,index as %Integer
