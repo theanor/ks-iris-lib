@@ -26,9 +26,7 @@ Method outputDocument(pFilename As %String, pDocument As EnsLib.HL7.Message, pSe
 {
     #Dim sc as %Status = $$$OK
     #Dim ex as %Exception.AbstractException
-
-    #Dim fileName As %String
-    
+   
     try {
         $$$TOE(sc,##super(pFilename,pDocument,pSeparators,pDoFraming))
         $$$TOE(sc,..PutSemaphoreFile(pFilename))
@@ -36,7 +34,7 @@ Method outputDocument(pFilename As %String, pDocument As EnsLib.HL7.Message, pSe
     catch (ex) {
       s sc = ex.AsStatus()
     }
-    q sc
+    return sc
 }
 
 }
