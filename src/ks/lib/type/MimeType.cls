@@ -85,7 +85,6 @@ ClassMethod LoadTypes() As %Status [ CodeMode = objectgenerator ]
     #Dim sc as %Status
     #Dim ex as %Exception.AbstractException
 
-    #Dim zc as %Dictionary.ClassDefinition
     #Dim xdata as %Dictionary.XDataDefinition
     #Dim types as %DynamicArray
     #Dim i as %Iterator.Array
