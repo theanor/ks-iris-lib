@@ -29,8 +29,8 @@ Method FilePathGet() As %String
 {
 	s directory = ##class(Ens.Util.Time).FormatDateTime(i%FilePath)
     if '##class(%File).DirectoryExists(directory) {
-      if '##class(%File).CreateDirectoryChain(directory,.ret) {
-        $$$LOGERROR("attempt to create archive directory chain failed : "_directory)
+      if '##class(%File).CreateDirectoryChain(directory,.rc) {
+        $$$LOGERROR("attempt to create archive directory chain failed : "_directory_" (return code : "_rc_")")
       }
 	}
 	return directory
