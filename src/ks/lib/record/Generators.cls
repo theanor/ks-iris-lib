@@ -38,9 +38,7 @@ ClassMethod GenerateDataTypeExportToFixed(compiledclass As %Dictionary.CompiledC
     #Dim len as %Integer
     
     s sc = $$$OK
-    try {              
-        s fillerParam = ##class(%Dictionary.CompiledClass).IDKEYOpen(compiledclass,"FILLER")
-
+    try {                      
         s startCol = prop.Parameters.GetAt("COL")
         if startCol="" {
           s startCol = 1
