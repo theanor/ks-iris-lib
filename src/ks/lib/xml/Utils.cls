@@ -1,4 +1,4 @@
-Class ks.lib.xml.Utils 
+Class ks.lib.xml.Utils
 {
 
 ClassMethod ExportSchema(className As %String, fileName As %String, namespace As %String = "http://temuri.org/ISC/Sample", namespacePrefix As %String = "tns") As %Status
@@ -53,7 +53,6 @@ ClassMethod ImportClassFromStream(className As %String, stream As %Stream.Object
   #Dim ex as %Exception.AbstractException
   #Dim reader as %XML.Reader
   #Dim result as %XML.Adaptor
-  #Dim found as %Boolean
   
   s sc = $$$OK
   try {
@@ -114,7 +113,6 @@ ClassMethod ImportClassFromXData(xdataClassName As %Dictionary.Classname, xdataN
 {
   
   #Dim ex as %Exception.AbstractException
-  #Dim result as %XML.Adaptor
 
   #Dim xdata as %Dictionary.CompiledXData
   #Dim data as %Stream.Object
@@ -139,8 +137,7 @@ ClassMethod ImportClassesFromStream(baseClassName As %String, stream As %Stream.
 
   #Dim reader as %XML.Reader
   #Dim result as %XML.Adaptor
-  #Dim found as %Boolean
-
+  
   #Dim stmt as %SQL.Statement
   #Dim rs as %SQL.StatementResult
   
@@ -200,7 +197,6 @@ ClassMethod ExportToFile(xml As %XML.Adaptor, fileName As %String, charset As %S
   #Dim sc as %Status = $$$OK
   #Dim ex as %Exception.AbstractException
   #Dim stream as %Stream.FileCharacter
-  #Dim writer as %XML.Writer
   
   try {
     if '$d(fileName) {
