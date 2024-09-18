@@ -200,8 +200,6 @@ ClassMethod MergeEnsColumns(targetNameSpace As %Dictionary.Identifier = {$namesp
   #Dim sc as %Status
   #Dim ex as %Exception.AbstractException
   #Dim sourceDirectory, targetDirectory as SYS.Database
-  #Dim targetDatabaseName as %Integer
-  #Dim targetNS as Config.Namespaces
   #Dim targetDB as %Dictionary.Identifier
   #Dim properties as %String
   
