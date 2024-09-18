@@ -14,7 +14,7 @@ This repository contains a set of utility classes :
 * ks.lib.xml : XML utility classes
 * ks.lib.purge : interoperability message purge utilities
 
-[![Quality Gate Status](https://community.objectscriptquality.com/api/project_badges/measure?project=intersystems_iris_community%2Fks-iris-lib&metric=alert_status)](https://community.objectscriptquality.com/dashboard?id=intersystems_iris_community%2Fks-iris-lib)
+[![Quality Gate Status](https://community.objectscriptquality.com/api/project_badges/measure?project=ks-iris-lib&metric=alert_status)](https://community.objectscriptquality.com/dashboard?id=ks-iris-lib)
 
 
 ## Usage
