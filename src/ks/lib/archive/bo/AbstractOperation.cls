@@ -51,8 +51,9 @@ Method OnMessage(request As %Library.Persistent, Output response As %Library.Per
     #Dim ex as %Exception.AbstractException
 
     #Dim fileName As %String
-    #Dim directory,subfolder As %String
+    #Dim directory As %String
     #Dim tag As %String
+    #Dim tags As %List
     #Dim messageStream As %Stream.Object
     
     try {
@@ -166,7 +167,7 @@ Method EvaluateSubFolderExpressions(request As %Persistent, Output sc As %Status
   return result
 }
 
-Method MessageStream(header As Ens.MessageHeader, message As %Persistent, Output messageStream As %Stream.Object, ByRef messageTag As %String) As %Status [ Abstract ]
+Method MessageStream(header As Ens.MessageHeader, message As %Persistent, Output messageStream As %Stream.Object, ByRef messageTags As %List) As %Status [ Abstract ]
 {
 }
 

@@ -10,7 +10,7 @@ Property RootElement As %String(MAXLEN = 32);
 
 Property ParameterFormat As %String(VALUELIST = ",literal,encoded,encoded12") [ InitialExpression = "literal" ];
 
-Method MessageStream(header As Ens.MessageHeader, message As %Persistent, Output messageStream As %Stream.Object, ByRef tag As %String) As %Status
+Method MessageStream(header As Ens.MessageHeader, message As %Persistent, Output messageStream As %Stream.Object, ByRef tags As %List) As %Status
 {
     #Dim sc as %Status = $$$OK
     #Dim ex as %Exception.AbstractException
