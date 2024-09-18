@@ -1,4 +1,4 @@
-Class ks.lib.interop.ServiceUtils 
+Class ks.lib.interop.ServiceUtils
 {
 
 ClassMethod TriggerService(configName As %String, message As %RegisteredObject) As %Status
@@ -26,7 +26,6 @@ ClassMethod SendRequestAsync(service As Ens.BusinessService, targetConfigNames A
 	#Dim ex as %Exception.AbstractException
 	
 	#Dim items
-	#Dim newRequest as Ens.MessageBody
 	
 	s sc = $$$OK
 	try {
