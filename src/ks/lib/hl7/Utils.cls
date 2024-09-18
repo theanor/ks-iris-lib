@@ -8,16 +8,16 @@ ClassMethod ExportToXML(message As EnsLib.HL7.Message, Output stream As %Stream.
   
   try {
     if '$d(stream) s stream = ##class(%Stream.TmpCharacter).%New()
-    s result = ##class(EnsLib.HL7.Util.FormatSimpleXMLv2).OutputDocument(message,.sc,stream,message.Separators)
+    d ##class(EnsLib.HL7.Util.FormatSimpleXMLv2).OutputDocument(message,.sc,stream,message.Separators)
     $$$TOE(sc,sc)
   }
   catch (ex) {
     s sc = ex.AsStatus()
   }
-  q sc
+  return sc
 }
 
-ClassMethod ImportFromXData(classRef, xdataName As %String, docTypeCategory As %String, Output sc As %Status) As EnsLib.HL7.Message
+ClassMethod ImportFromXData(classRef As %Dictionary.Classname, xdataName As %String, docTypeCategory As %String, Output sc As %Status) As EnsLib.HL7.Message
 {
 	#Dim ex as %Exception.AbstractException
 	#Dim msg as EnsLib.HL7.Message
@@ -77,7 +77,7 @@ ClassMethod ParseExpressions(msg As EnsLib.HL7.Message, str As %String, Output s
   catch (ex) {
     s sc = ex.AsStatus()
   }
-  q result
+  return result
 }
 
 }
