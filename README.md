@@ -1,4 +1,4 @@
-[![Gitter](https://img.shields.io/badge/Available%20on-Intersystems%20Open%20Exchange-00b2a9.svg)](https://openexchange.intersystems.com/package/iris-lib)
+[![Gitter](https://img.shields.io/badge/Available%20on-Intersystems%20Open%20Exchange-00b2a9.svg)](https://openexchange.intersystems.com/package/ks-iris-lib)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat&logo=AdGuard)](LICENSE)
 
 ## Description
@@ -12,6 +12,10 @@ This repository contains a set of utility classes :
 * ks.lib.record : (yet another?) simple record mapper
 * ks.lib.test : unit testing utility classes
 * ks.lib.xml : XML utility classes
+* ks.lib.purge : interoperability message purge utilities
+
+[![Quality Gate Status](https://community.objectscriptquality.com/api/project_badges/measure?project=intersystems_iris_community%2Fks-iris-lib&metric=alert_status)](https://community.objectscriptquality.com/dashboard?id=intersystems_iris_community%2Fks-iris-lib)
+
 
 ## Usage
 Once you clone the new repo to your laptop and open VSCode (with the [InterSystems ObjectScript Extension Pack](https://marketplace.visualstudio.com/items?itemName=intersystems-community.objectscript-pack) installed) you'll be able to start development immediately.
