@@ -60,7 +60,7 @@ ClassMethod ImportClassFromStream(className As %String, stream As %Stream.Object
     s reader = ##class(%XML.Reader).%New()
     d reader.CorrelateRoot(className)
     $$$TOE(sc,reader.OpenStream(stream))
-    s found = reader.Next(.result,.sc,namespace)
+    d reader.Next(.result,.sc,namespace)
     $$$TOE(sc,sc)  
   }
   catch (ex) {
