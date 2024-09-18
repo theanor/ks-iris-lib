@@ -39,9 +39,7 @@ ClassMethod GenerateDataTypeExportToFixed(compiledclass As %Dictionary.CompiledC
     
     s sc = $$$OK
     try {              
-
         s fillerParam = ##class(%Dictionary.CompiledClass).IDKEYOpen(compiledclass,"FILLER")
-        s filler = $select($isobject(fillerParam):fillerParam.Default,1:" ")
 
         s startCol = prop.Parameters.GetAt("COL")
         if startCol="" {
@@ -176,7 +174,6 @@ ClassMethod DelimitedHeader(compiledclass As %Dictionary.CompiledClass, code As 
   #Dim sc as %Status
   #Dim ex as %Exception.AbstractException
 
-  #Dim i as %Integer
   #Dim props as %Dictionary.CompiledProperty
   #Dim prop as %Dictionary.CompiledProperty
   #Dim curIndex,index as %Integer
