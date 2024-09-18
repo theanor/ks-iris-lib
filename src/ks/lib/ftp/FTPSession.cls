@@ -43,7 +43,7 @@ Method Connect(Server As %String, Username As %String, Password As %String, Port
 		Set sc=##class(%Net.HttpRequest).CheckSSLCN(Server)
 		Use io
 		If $$$ISERR(sc) {
-			Set returnSc=..error(534,"Failed to validate TLS server host name certificate '"_Server_"'")
+			Set sc=##class(%SYSTEM.Status).AppendStatus(sc,..error(534,"Failed to validate TLS server host name certificate '"_Server_"'"))
 			Do ..Logout()
 			Quit ..error(534,"Failed to validate TLS server host name certificate '"_Server_"'")
 		}
