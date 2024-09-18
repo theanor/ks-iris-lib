@@ -75,8 +75,7 @@ Method ReadRecord(line As %String, Output sc As %Status) As RecordAdaptor [ Priv
 {
   #Dim ex as %Exception.AbstractException
   #Dim result as %Dictionary.Classname
-  #Dim k
-  #Dim spec as %List
+  #Dim k as %String
   #Dim method as %String
   #Dim params as %List
   
@@ -216,7 +215,7 @@ Method SkipLines(count As %Integer) As %Status
   try {
     s skipped = 0
     while '..Stream.AtEnd && (skipped < count) {
-      s l = ..Stream.ReadLine()
+      d ..Stream.ReadLine()
       s skipped = skipped+1
     }
   } catch (ex) {
