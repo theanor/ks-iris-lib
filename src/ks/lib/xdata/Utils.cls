@@ -1,4 +1,4 @@
-Class ks.lib.xdata.Utils Extends %RegisteredObject
+Class ks.lib.xdata.Utils
 {
 
 /// export XData block named <b>xdataName</b> of class <b>className</b> to file <b>fileName</b>

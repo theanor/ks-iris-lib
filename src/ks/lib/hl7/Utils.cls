@@ -1,4 +1,4 @@
-Class ks.lib.hl7.Utils Extends %RegisteredObject
+Class ks.lib.hl7.Utils
 {
 
 ClassMethod ExportToXML(message As EnsLib.HL7.Message, Output stream As %Stream.Object) As %Status

@@ -1,4 +1,4 @@
-Class ks.lib.io.StreamRedirectAdaptor Extends %RegisteredObject
+Class ks.lib.io.StreamRedirectAdaptor
 {
 
 ClassMethod EnableRedirection(stream As %Stream.Object) As %Status

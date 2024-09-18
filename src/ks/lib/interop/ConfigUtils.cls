@@ -1,4 +1,4 @@
-Class ks.lib.interop.ConfigUtils Extends %RegisteredObject
+Class ks.lib.interop.ConfigUtils
 {
 
 ClassMethod AddConfigItem(prod As Ens.Config.Production, name As %String, className As %String, ByRef item As Ens.Config.Item, enabled As %Boolean = 1, poolSize As %Integer = 1) As %Status

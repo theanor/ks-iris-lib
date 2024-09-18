@@ -1,4 +1,4 @@
-Class ks.lib.interop.ServiceUtils Extends %RegisteredObject
+Class ks.lib.interop.ServiceUtils 
 {
 
 ClassMethod TriggerService(configName As %String, message As %RegisteredObject) As %Status

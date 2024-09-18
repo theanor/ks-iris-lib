@@ -1,4 +1,4 @@
-Class ks.lib.json.Utils Extends %RegisteredObject
+Class ks.lib.json.Utils 
 {
 
 ClassMethod ObjectKeyList(object As %DynamicObject) As %List

@@ -1,4 +1,4 @@
-Class ks.lib.interop.ProcessUtils Extends %RegisteredObject
+Class ks.lib.interop.ProcessUtils
 {
 
 ClassMethod SendRequestAsync(process As Ens.BusinessProcess, targetConfigNames As Ens.DataType.ConfigName, request As Ens.MessageBody, responseRequired As %Boolean = 1, completionKey As %String = "", description As %String = "") As %Status

@@ -1,4 +1,4 @@
-Class ks.lib.object.Utils Extends %RegisteredObject
+Class ks.lib.object.Utils 
 {
 
 ClassMethod IsAbstract(className As %Dictionary.Classname, Output sc As %Status) As %Boolean

@@ -1,4 +1,4 @@
-Class ks.lib.xml.Utils Extends %RegisteredObject
+Class ks.lib.xml.Utils 
 {
 
 ClassMethod ExportSchema(className As %String, fileName As %String, namespace As %String = "http://temuri.org/ISC/Sample", namespacePrefix As %String = "tns") As %Status
