@@ -21,7 +21,6 @@ Method ExportToStringDelimited(Output line As %String) As %Status [ CodeMode = o
   #Dim sc as %Status
   #Dim ex as %Exception.AbstractException
 
-  #Dim i as %Integer
   #Dim props as %Dictionary.CompiledProperty
   #Dim prop as %Dictionary.CompiledProperty
   #Dim curIndex,index as %Integer
@@ -187,7 +186,6 @@ Method ImportFromStringDelimited(line As %String) As %Status [ CodeMode = object
   #Dim props as %Dictionary.CompiledProperty
   #Dim index as %Integer
   #Dim prop as %Dictionary.CompiledProperty
-  #Dim value as %String
     
 
   s type = ""
@@ -224,7 +222,6 @@ Method ImportFromStringFixed(line As %String) As %Status [ CodeMode = objectgene
   #Dim props as %Dictionary.CompiledProperty
   #Dim index as %Integer
   #Dim prop as %Dictionary.CompiledProperty
-  #Dim value as %String
     
   s type = ""
   s typeParam = ##class(%Dictionary.CompiledParameter).IDKEYOpen(%compiledclass.Name,"TYPE")
@@ -267,7 +264,6 @@ ClassMethod Correlate(line As %String, lineNum As %Integer, Output sc As %Status
   #Dim ex as %Exception.AbstractException
   #Dim result as RecordAdaptor
   #Dim prop as %Dictionary.CompiledProperty
-  #Dim correlateParam as %Dictionary.CompiledParameter
   
   s sc = $$$OK
   s result = $$$NULLOREF
@@ -296,12 +292,10 @@ ClassMethod Correlate(line As %String, lineNum As %Integer, Output sc As %Status
 ClassMethod Read(stream As %Stream.Object, ByRef currentPosition As %Integer = 0, ByRef currentLineNum As %Integer = 1, Output sc As %Status) As RecordAdaptor [ CodeMode = objectgenerator ]
 {
   #Dim ex as %Exception.AbstractException
-  #Dim result as RecordAdaptor
   #Dim type as %String
   #Dim typeParam as %Dictionary.CompiledParameter
   
   s sc = $$$OK
-  s result = $$$NULLOREF  
   try {
     $$$TOE(sc,%code.WriteLine("    s result=$$$NULLOREF"))
 
