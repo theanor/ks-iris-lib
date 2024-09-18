@@ -67,7 +67,7 @@ Method ExportToStringFixed(Output line As %String) As %Status [ CodeMode = objec
 
   #Dim props as %Dictionary.CompiledProperty
   #Dim prop as %Dictionary.CompiledProperty
-  #Dim curIndex,index as %Integer
+  #Dim index as %Integer
 
 
     s type = ""
@@ -79,7 +79,6 @@ Method ExportToStringFixed(Output line As %String) As %Status [ CodeMode = objec
   try {
     $$$TOE(sc,##class(Generators).FetchProps(%compiledclass,.props))
 
-    s curIndex = 1
     s index = ""
     s index = $order(props(index))
     $$$TOE(sc,%code.WriteLine("    s line = $justify("""","_props_")"))
