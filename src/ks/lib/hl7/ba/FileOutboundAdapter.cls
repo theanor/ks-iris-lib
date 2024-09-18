@@ -5,7 +5,6 @@ Method CreateFilename(pFileName As %String, pSpec As %String, pIsVMS As %Boolean
 {
 	#Dim sc as %Status
 	#Dim ex as %Exception.AbstractException
-	#Dim fileName as %String
 	
 	s sc = $$$OK
 	try {
