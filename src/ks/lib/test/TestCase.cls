@@ -49,9 +49,6 @@ ClassMethod ImportHL7FromFile(fileName As %String, docTypeCategory As %String, i
 ClassMethod ImportXMLFromFile(className As %String, fileName As %String, namespace As %String = "", pathIsTestResource As %Boolean = 1) As %RegisteredObject
 {
   #Dim sc as %Status = $$$OK
-  #Dim ex as %Exception.AbstractException
-
-  #Dim reader as %XML.Reader
   #Dim result as %RegisteredObject
   #Dim fp as %String
 
@@ -324,7 +321,6 @@ ClassMethod CompareHL7Files(messageFileName As %String, expectedFileName As %Str
 
 	#Dim result As %Boolean
 	#Dim message,expected As EnsLib.HL7.Message
-	#Dim msgDiffs as %String
 	
 	s sc = $$$OK
 	s result = 1
