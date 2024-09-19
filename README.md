@@ -21,7 +21,7 @@ Documentation and unit tests demoing things are still very sparse, I'm working o
 
 Feel free to comment, review and contribute !
 
-[![Quality Gate Status](https://community.objectscriptquality.com/api/project_badges/measure?project=intersystems_iris_community%3Aks-iris-lib&metric=alert_status)](https://community.objectscriptquality.com/dashboard?id=intersystems_iris_community%3Aks-iris-lib)
+[![Quality Gate Status](https://community.objectscriptquality.com/api/project_badges/measure?project=intersystems_iris_community%3Aks-iris-lib)](https://community.objectscriptquality.com/dashboard?id=intersystems_iris_community%3Aks-iris-lib)
 
 
 ## Usage
