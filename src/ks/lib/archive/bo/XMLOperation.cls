@@ -8,8 +8,10 @@ Property FileSpec As %String(MAXLEN = 128) [ InitialExpression = "%Y%m%d%H%M%S%N
 /// Optional root element 
 Property RootElement As %String(MAXLEN = 32);
 
+/// export xml parameters format
 Property ParameterFormat As %String(VALUELIST = ",literal,encoded,encoded12") [ InitialExpression = "literal" ];
 
+/// extract XML message stream
 Method MessageStream(header As Ens.MessageHeader, message As %Persistent, Output messageStream As %Stream.Object, ByRef tags As %List) As %Status
 {
     #Dim sc as %Status = $$$OK

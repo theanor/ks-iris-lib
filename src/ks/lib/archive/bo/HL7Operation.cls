@@ -5,6 +5,7 @@ Property FileSpec As %String(MAXLEN = 128) [ InitialExpression = "%Y%m%d%H%M%S%N
 
 Property FileNameExpressions As %String(MAXLEN = 32) [ InitialExpression = "Body.Name-BodyId" ];
 
+/// extract hl7 message stream
 Method MessageStream(header As Ens.MessageHeader, message As EnsLib.HL7.Message, Output messageStream As %Stream.Object, ByRef tags As %List) As %Status
 {
     #Dim sc as %Status = $$$OK
