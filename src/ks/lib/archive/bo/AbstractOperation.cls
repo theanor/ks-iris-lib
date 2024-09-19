@@ -1,3 +1,5 @@
+/// abstract archive operation
+/// provides basic behavior for archiving incoming messages into a root directory
 Class ks.lib.archive.bo.AbstractOperation Extends Ens.BusinessOperation [ Abstract ]
 {
 
@@ -5,35 +7,57 @@ Parameter ADAPTER = "EnsLib.File.OutboundAdapter";
 
 Parameter SETTINGS = "-FilePath,RootDirectory,FileSpec,CreateDirectories,FileNameExpressions,FileNameSeparator,SubFolderExpressions,SubFolderSeparator";
 
+/// root directory path
 Property RootDirectory As %String(MAXLEN = 2048);
 
+/// file spec
 Property FileSpec As %String(MAXLEN = 128) [ InitialExpression = "%Y%m%d%H%M%S%N%!#+(.000)-%f.dat" ];
 
+/// if true, will created required new directories
 Property CreateDirectories As %Boolean [ InitialExpression = 1 ];
 
+/// list of objectscript expressions, separated by <property>FileNameSeparator</property>
 Property FileNameExpressions As %String(MAXLEN = 32) [ InitialExpression = "BodyId" ];
 
+/// file name separator
 Property FileNameSeparator As %String(MAXLEN = 4) [ InitialExpression = "-" ];
 
+/// list of subfolder expressions, separated by <property>SubFolderSeparator</property>
 Property SubFolderExpressions As %String(MAXLEN = 1024) [ InitialExpression = "SessionHeader.SourceConfigName\CurrentDateTime(""%Y"")\CurrentDateTime(""%m"")\CurrentDateTime(""%d"")" ];
 
+/// subfolder separator
 Property SubFolderSeparator As %String(MAXLEN = 1) [ InitialExpression = "\" ];
 
+/// file adapter
 Property Adapter As EnsLib.File.OutboundAdapter;
 
+/// transient property available during file name and subfolder evaluation
+/// contains the incoming header
 Property Header As Ens.MessageHeader [ Transient ];
 
+/// transient property available during file name and subfolder evaluation
+/// contains the incoming message session header
 Property SessionHeader As Ens.MessageHeader [ Transient ];
 
+/// transient property available during file name and subfolder evaluation
+/// contains message body
 Property Body As %RegisteredObject [ Transient ];
 
+/// transient property available during file name and subfolder evaluation
+/// contains message body id
 Property BodyId As %String [ Transient ];
 
+/// transient property available during file name and subfolder evaluation
+/// messages tags returned by <Method>MessageStream</Method>
+Property Tags As %List [ MultiDimensional, Transient ];
+
+/// initialize
 Method OnInit() As %Status
 {
-  #Dim sc as %Status = $$$OK
+  #Dim sc as %Status
   #Dim ex as %Exception.AbstractException
   
+  s sc = $$$OK
   try {
     if '##class(%File).DirectoryExists(..RootDirectory) && ..CreateDirectories {
       d ##class(%File).CreateDirectoryChain(..RootDirectory)
@@ -45,6 +69,7 @@ Method OnInit() As %Status
   return sc
 }
 
+/// process incoming message
 Method OnMessage(request As %Library.Persistent, Output response As %Library.Persistent) As %Status
 {
     #Dim sc as %Status = $$$OK
@@ -58,25 +83,30 @@ Method OnMessage(request As %Library.Persistent, Output response As %Library.Per
     
     try {
       $$$TRACE("exporting message to stream")
-
-      $$$TOE(sc,..InitializeRequestProperties(request))
-
-      $$$TRACE("root directory :"_..RootDirectory)           
-      s directory = ..EvaluateSubFolderExpressions(request,.sc)
-      $$$TOE(sc,sc)
-      if ..CreateDirectories && '##class(%File).DirectoryExists(directory) d ##class(%File).CreateDirectoryChain(directory)
-      $$$TRACE("target directory : "_directory)
-
       $$$TOE(sc,..MessageStream(..%RequestHeader,request,.messageStream,.tags))
-      if $isobject(messageStream) {     
-        s tag =  ..EvaluateFileNameExpressions(request,.sc)
+      if $isobject(messageStream) {
+        s ..MessageTags = tags
+        $$$TOE(sc,..InitializeRequestProperties(request))
+
+        $$$TRACE("root directory :"_..RootDirectory)           
+        s directory = ..EvaluateSubFolderExpressions(request,.sc)
         $$$TOE(sc,sc)
-        s ..Adapter.FilePath = directory
-        s fileName = ..Adapter.CreateFilename(tag,..FileSpec,0)
-        $$$TRACE("archiving message to file")
-        $$$TOE(sc,..Adapter.PutStream(fileName,messageStream))
-      } else {        
-        throw ##class(%Exception.General).%New("could not export message")
+
+        if ..CreateDirectories && '##class(%File).DirectoryExists(directory) d ##class(%File).CreateDirectoryChain(directory)
+        $$$TRACE("target directory : "_directory)
+
+        if $isobject(messageStream) {     
+          s tag =  ..EvaluateFileNameExpressions(request,.sc)
+          $$$TOE(sc,sc)
+          s ..Adapter.FilePath = directory
+          s fileName = ..Adapter.CreateFilename(tag,..FileSpec,0)
+          $$$TRACE("archiving message to file")
+          $$$TOE(sc,..Adapter.PutStream(fileName,messageStream))
+        } else {        
+          throw ##class(%Exception.General).%New("could not export message")
+        }
+      } else {
+        $$$TRACE("message not archived, MessageStream did not return any data")
       }
     }
     catch (ex) {
@@ -167,6 +197,7 @@ Method EvaluateSubFolderExpressions(request As %Persistent, Output sc As %Status
   return result
 }
 
+/// override this to provide message to be archived in <b>messageStream</b>
 Method MessageStream(header As Ens.MessageHeader, message As %Persistent, Output messageStream As %Stream.Object, ByRef messageTags As %List) As %Status [ Abstract ]
 {
 }
