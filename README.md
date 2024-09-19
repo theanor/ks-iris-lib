@@ -3,16 +3,23 @@
 
 ## Description
 
-This repository contains a set of utility classes :
+The purpose of this package is to collect a set of general-purpose utility classes, similar to 'commons' packages available for other programming languages (such as Java).
 
-* ks.lib.hl7 : HL7 utility classes
+* ks.lib.archive : interoperability business operations to archive messages
+* ks.lib.file : file utility classes and interoperability adapters/operations/services dealing with files
+* ks.lib.hl7 : HL7 utility classes and interoperability  adapters/operations/services dealing with HL7 messages
 * ks.lib.interop : interoperability utility classes
+* ks.lib.io : I/O utility classes
 * ks.lib.json : JSON utility classes
 * ks.lib.object : objects utility classes
+* ks.lib.purge : interoperability message purge utilities
 * ks.lib.record : (yet another?) simple record mapper
 * ks.lib.test : unit testing utility classes
 * ks.lib.xml : XML utility classes
-* ks.lib.purge : interoperability message purge utilities
+
+Documentation and unit tests demoing things are still very sparse, I'm working on it ;-)
+
+Feel free to comment, review and contribute !
 
 [![Quality Gate Status](https://community.objectscriptquality.com/api/project_badges/measure?project=intersystems_iris_community%3Aks-iris-lib&metric=alert_status)](https://community.objectscriptquality.com/dashboard?id=intersystems_iris_community%3Aks-iris-lib)
 
