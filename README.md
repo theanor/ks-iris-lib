@@ -34,7 +34,7 @@ Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installi
 Clone/git pull the repo into any local directory
 
 ```
-$ git clone https://github.com/theanor/iris-lib.git
+$ git clone https://github.com/theanor/ks-iris-lib.git
 ```
 
 Open the terminal in this directory and call the command to build and run InterSystems IRIS in container:
