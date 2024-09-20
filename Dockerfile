@@ -1,5 +1,6 @@
-ARG IMAGE=intersystemsdc/irishealth-community:latest
-FROM $IMAGE
+ARG IMAGE=intersystemsdc/irishealth-community
+ARG VERSION=latest
+FROM $IMAGE:$VERSION
 
 USER root
 
