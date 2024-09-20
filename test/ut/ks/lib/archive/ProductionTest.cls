@@ -1,7 +1,7 @@
 Class ut.ks.lib.archive.ProductionTest Extends ks.lib.test.TestProduction
 {
 
-Parameter PRODUCTION = "test.ut.ks.lib.archive.Production";
+Parameter PRODUCTION = "ut.ks.lib.archive.Production";
 
 Parameter IGNOREPRODUCTIONERRORS = 1;
 

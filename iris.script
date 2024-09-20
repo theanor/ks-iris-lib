@@ -4,7 +4,7 @@
  s nameSpace = "USER"
  d ##class(%Library.EnsembleMgr).EnableNamespace(nameSpace)
  
- s ^SYS("Security","CSP","AllowPrefix","/csp/healthshare/dev/","%UnitTest.")=1
+ s ^SYS("Security","CSP","AllowPrefix","/csp/healthshare/user/","%UnitTest.")=1
  
  s $namespace = nameSpace
 
@@ -12,6 +12,6 @@
  s ^UnitTestResourcesRoot=^RepositoryRoot_"/resource/test"
  s ^UnitTestRoot=^RepositoryRoot_"/test"
 
- zpm "load /irisrun/repo -v":1:1
+ zpm "load /opt/irisbuild":1:1
 
  halt
