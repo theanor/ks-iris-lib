@@ -12,6 +12,6 @@
  s ^UnitTestResourcesRoot=^RepositoryRoot_"/resource/test"
  s ^UnitTestRoot=^RepositoryRoot_"/test"
 
- zpm "load /opt/irisbuild":1:1
+ zpm "load /opt/irisbuild":1
 
  halt
