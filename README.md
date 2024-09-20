@@ -48,8 +48,8 @@ $ docker-compose up -d
 To open IRIS Terminal do:
 
 ```
-$ docker-compose exec iris iris session iris -U IRISAPP
-IRISAPP>
+$ docker-compose exec iris iris session iris -U DEV
+DEV>
 ```
 
 To exit the terminal, do any of the following:
