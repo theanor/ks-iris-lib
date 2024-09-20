@@ -1,1 +1,1 @@
-docker-compose exec iris iris session iris -U DEV
+docker-compose exec iris iris session iris -U USER
