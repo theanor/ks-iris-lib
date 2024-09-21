@@ -99,7 +99,6 @@ Method AddConfigItemSetup(itemName As Ens.DataType.ConfigName, itemClass As %Dic
   
   s sc = $$$OK
   try {                
-        // s production = ##class(Ens.Config.Production).indexNameOpen(..#PRODUCTION)
         s production = ##class(Ens.Config.Production).%OpenId(..#PRODUCTION)
         d $$$AssertTrue($isobject(production))
         $$$TOE(sc,##class(ks.lib.interop.ConfigUtils).AddConfigItem(production,itemName,itemClass,.fooOperation))
