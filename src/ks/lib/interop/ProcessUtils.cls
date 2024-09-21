@@ -20,7 +20,7 @@ ClassMethod SendRequestAsync(process As Ens.BusinessProcess, targetConfigNames A
 	} catch (ex) {
 		s sc = ex.AsStatus()
 	}
-    q sc
+    return sc
 }
 
 }

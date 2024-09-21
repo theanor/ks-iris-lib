@@ -17,7 +17,7 @@ ClassMethod TriggerService(configName As %String, message As %RegisteredObject) 
 	 } catch (ex) {
 	  s sc = ex.AsStatus()
 	 }
-	 q sc
+	 return sc
 }
 
 ClassMethod SendRequestAsync(service As Ens.BusinessService, targetConfigNames As %String, request As Ens.MessageBody, description As %String = "") As %Status
@@ -37,7 +37,7 @@ ClassMethod SendRequestAsync(service As Ens.BusinessService, targetConfigNames A
 	} catch (ex) {
 		s sc = ex.AsStatus()
 	}
-    q sc
+    return sc
 }
 
 ClassMethod CreateService(serviceClass As %Dictionary.Classname, ByRef service As Ens.BusinessService) As %Status
@@ -63,7 +63,7 @@ ClassMethod CreateService(serviceClass As %Dictionary.Classname, ByRef service A
 	} catch (ex) {
 	  s sc = ex.AsStatus()
 	}
-	q sc
+	return sc
 }
 
 }
