@@ -29,6 +29,7 @@ Method OnBeforeProductionStart() As %Status
 
     Try {
      $$$TOE(sc,..ChangeSetting(..#PRODUCTION,"HL7Operation","RootDirectory",..HL7OutputDir,1))
+     $$$TOE(sc,..ChangeSetting(..#PRODUCTION,"XMLOperation","RootDirectory",..HL7OutputDir,1))
     }
     Catch (ex) {
       Set sc = ex.AsStatus()
@@ -41,8 +42,16 @@ Method OnAfterProductionStart() As %Status
   #Dim sc as %Status = $$$OK
   #Dim ex as %Exception.AbstractException
 
+  #Dim hl7Msg As EnsLib.HL7.Message
+  #Dim xmlMsg As TestMessage
+
 
   Try {
+    s hl7Msg = ..ImportHL7FromFile("archive\msg\test.hl7","2.5")    
+    d $$$AssertTrue($isobject(hl7Msg))
+    $$$TOE(sc,..SendRequest("HL7Operation",hl7Msg,,0))
+    s xmlMsg = ..ImportXMLFromFile("ut.ks.lib.archive.TestMessage","archive\msg\test.xml")
+    $$$TOE(sc,..SendRequest("XMLOperation",xmlMsg,,0))
   }
   Catch (ex) {
     Set sc = ex.AsStatus()

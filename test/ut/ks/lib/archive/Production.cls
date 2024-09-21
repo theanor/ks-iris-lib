@@ -9,6 +9,9 @@ XData ProductionDefinition
   <Item Name="HL7Operation" Category="" ClassName="ks.lib.archive.bo.HL7Operation" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
     <Setting Target="Host" Name="RootDirectory"></Setting>
   </Item>
+  <Item Name="XMLOperation" Category="" ClassName="ks.lib.archive.bo.XMLOperation" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
+    <Setting Target="Host" Name="RootDirectory"></Setting>
+  </Item>
 
 
 </Production>
