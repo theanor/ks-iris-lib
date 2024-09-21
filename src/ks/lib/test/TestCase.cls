@@ -52,7 +52,7 @@ ClassMethod ImportXMLFromFile(className As %String, fileName As %String, namespa
   #Dim result as %RegisteredObject
   #Dim fp as %String
 
-  s fp = $select(pathIsTestResource:##class(%File).NormalizeFilename(fileName,##class(Runner).ResourceDirectory()),1:fileName)
+  s fp = $select(pathIsTestResource:##class(%File).NormalizeFilename(fileName,##class(Runner).TestResourceDirectory()),1:fileName)
   s result = ##class(ks.lib.xml.Utils).ImportClassFromFile(className,fp,namespace,.sc) 
   return result
 }
