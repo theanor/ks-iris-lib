@@ -181,7 +181,6 @@ ClassMethod GetCategoryItems(productionName As %Dictionary.Classname, category A
 	s sc = $$$OK
 	s items = ##class(%ListOfObjects).%New()
 	try {
-  	     $$$TOE(sc,##class(Ens.Director).GetProductionStatus(.productionName,.productionState))
 		 s prod = ##class(Ens.Config.Production).%OpenId(productionName)
 		 for i=1:1:prod.Items.Size
 		 {
