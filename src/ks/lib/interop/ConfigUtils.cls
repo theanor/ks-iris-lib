@@ -1,6 +1,8 @@
+/// interoperability configuration utilities
 Class ks.lib.interop.ConfigUtils
 {
 
+/// Add a new configuration item to production <b>prod</b>
 ClassMethod AddConfigItem(prod As Ens.Config.Production, name As %String, className As %String, ByRef item As Ens.Config.Item, enabled As %Boolean = 1, poolSize As %Integer = 1) As %Status
 {
 	
@@ -18,9 +20,10 @@ ClassMethod AddConfigItem(prod As Ens.Config.Production, name As %String, classN
 	} catch (ex) {
 		s sc = ex.AsStatus()
 	}
-    q sc
+    return sc
 }
 
+/// set configuration <b>item</b> setting <b>name</b> to <b>value</b>, <b>target</b> must be either "Host" or "Adapter"
 ClassMethod SetSetting(item As Ens.Config.Item, name As %String, value As %String, target As %String) As %Status
 {
 	
@@ -41,9 +44,11 @@ ClassMethod SetSetting(item As Ens.Config.Item, name As %String, value As %Strin
 	} catch (ex) {
 		s sc = ex.AsStatus()
 	}
-    q sc
+    return sc
 }
 
+/// return value of configuration item <b>name</b> <b>settingName</b> setting
+/// set optional <b>productionName</b> to address non-current productions
 ClassMethod GetSetting(name As Ens.DataType.ConfigName, settingName As %Dictionary.Identifier, productionName As %Dictionary.Identifier = "", Output status As %Status) As %String
 {
 	#Dim sc as %Status = $$$OK
@@ -101,7 +106,7 @@ ClassMethod ImportLUTFromXData(className As %String, xdataName As %String) As %S
 	} catch (ex) {
 		s sc = ex.AsStatus()
 	}
-    q sc
+    return sc
 }
 
 ClassMethod GetConfigItem(name As %String, productionName As %String = "", ByRef sc As %Status) As Ens.Config.Item
@@ -123,7 +128,7 @@ ClassMethod GetConfigItem(name As %String, productionName As %String = "", ByRef
 	return result
 }
 
-/// returns array of config items using className
+/// returns array of config items using <b>className</b>
 ClassMethod FindItemsOfClass(className As %Dictionary.Classname, Output items As Ens.Config.Item, productionName As %Dictionary.Classname = "") As %Status
 {
 	#Dim sc as %Status = $$$OK
@@ -147,7 +152,7 @@ ClassMethod FindItemsOfClass(className As %Dictionary.Classname, Output items As
 	} catch (ex) {
 	  s sc = ex.AsStatus()
 	}
-	q sc
+	return sc
 }
 
 ClassMethod HeaderSourceConfigName(headerId As %Integer) As %String
@@ -189,7 +194,7 @@ ClassMethod GetCategoryItems(productionName As %Dictionary.Classname, category A
 	} catch ex {
 		s sc = ex.AsStatus()		
 	}
-	q sc
+	return sc
 }
 
 ClassMethod MergeEnsColumns(targetNameSpace As %Dictionary.Identifier = {$namespace}) As %Status
