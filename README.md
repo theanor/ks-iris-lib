@@ -48,7 +48,7 @@ $ docker-compose up -d
 To open IRIS Terminal do:
 
 ```
-$ docker-compose exec iris iris session iris -U DEV
+$ docker-compose exec iris iris session iris -U USER
 DEV>
 ```
 
