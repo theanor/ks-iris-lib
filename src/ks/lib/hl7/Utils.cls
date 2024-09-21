@@ -54,9 +54,10 @@ ClassMethod IsEmptySegment(segment As EnsLib.HL7.Segment) As %Boolean
  s str = $replace(str,name,"")
  s str = $replace(str,fs,"")
  s str = $zstrip(str,"*C")
- q $length(str) = 0
+ return $length(str) = 0
 }
 
+/// Parse <b>str</b>, replacing expressions as ${<property path>} by values from <b>msg</b>
 ClassMethod ParseExpressions(msg As EnsLib.HL7.Message, str As %String, Output sc As %Status) As %String
 {
   #Dim ex as %Exception.AbstractException
