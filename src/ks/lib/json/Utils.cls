@@ -1,9 +1,9 @@
-Class ks.lib.json.Utils 
+Class ks.lib.json.Utils
 {
 
 ClassMethod ObjectKeyList(object As %DynamicObject) As %List
 {
- #Dim iterator
+ #Dim iterator as %Iterator.Object
  #Dim key As %String
  #Dim keys As %List 
 
@@ -15,7 +15,7 @@ ClassMethod ObjectKeyList(object As %DynamicObject) As %List
 ClassMethod KeyValuesList(object As %DynamicObject, keys As %List) As %List
 {
  #Dim value As %List
- #Dim ptr 
+ #Dim ptr As %Integer
 
  s ptr=0
  while $listnext(keys,ptr,value) {
@@ -52,7 +52,7 @@ ClassMethod ListToArray(list As %ListOfObjects(ELEMENTTYPE="%JSON.Adaptor"), Out
     catch (ex) {
       s sc = ex.AsStatus()
     }
-    q sc
+    return sc
 }
 
 ClassMethod JSONFromXData(className As %Dictionary.Classname, xDataName As %Dictionary.Identifier, Output result As %DynamicAbstractObject) As %Status
