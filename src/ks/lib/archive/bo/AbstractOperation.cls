@@ -85,7 +85,7 @@ Method OnMessage(request As %Library.Persistent, Output response As %Library.Per
       $$$TRACE("exporting message to stream")
       $$$TOE(sc,..MessageStream(..%RequestHeader,request,.messageStream,.tags))
       if $isobject(messageStream) {
-        s ..MessageTags = tags
+        s ..Tags = tags
         $$$TOE(sc,..InitializeRequestProperties(request))
 
         $$$TRACE("root directory :"_..RootDirectory)           
