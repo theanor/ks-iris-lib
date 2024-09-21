@@ -1,6 +1,8 @@
+/// extend this class and use <method>EnableRedirection</method> to redirect I/O to a stream
 Class ks.lib.io.StreamRedirectAdaptor
 {
 
+/// enable redirection to <b>stream</b>
 ClassMethod EnableRedirection(stream As %Stream.Object) As %Status
 {
     #Dim sc as %Status
@@ -23,6 +25,7 @@ ClassMethod EnableRedirection(stream As %Stream.Object) As %Status
     return sc
 }
 
+/// disable current redirection (must be balanced with <method>EnableRedirection</method>)
 ClassMethod DisableRedirection() As %Status
 {
     #Dim sc as %Status
