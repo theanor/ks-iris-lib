@@ -103,7 +103,7 @@ ClassMethod StripRTFStream(inputStream As %Stream.Object, Output outputStream As
   } catch (ex) {
     s sc = ex.AsStatus()
   }
-  q sc
+  return sc
 }
 
 }
