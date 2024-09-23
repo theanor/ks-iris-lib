@@ -16,7 +16,7 @@ ClassMethod StripRTFStream(inputStream As %Stream.Object, Output outputStream As
   #Dim ucskip as %Integer = 1
   #Dim curskip as %Integer = 0
 
-  s:('$data(outputStream) || '$isobject(outputStream)) output = ##class(%Stream.GlobalCharacter).%New()
+  s:('$data(outputStream) || '$isobject(outputStream)) outputStream = ##class(%Stream.GlobalCharacter).%New()
   d dictionary.SetAt(outputStream.LineTerminator,"par")
   d dictionary.SetAt(outputStream.LineTerminator_outputStream.LineTerminator,"sect")
   d dictionary.SetAt(outputStream.LineTerminator_outputStream.LineTerminator,"page")
