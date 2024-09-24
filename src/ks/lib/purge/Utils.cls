@@ -49,6 +49,7 @@ ClassMethod PurgeSessions(sourceConfigName As Ens.DataType.ConfigName, Output pu
   #Dim stmt as %SQL.Statement
   #Dim rs as %SQL.StatementResult
   #Dim dt As %String
+  #Dim oldTm,oldAc As %String
   
   s sc = $$$OK
   if noDataMode { // set transaction mode and autocommit options
