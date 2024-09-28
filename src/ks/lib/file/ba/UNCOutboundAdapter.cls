@@ -1,3 +1,6 @@
+/// CAVEAT : this adapter is compatible only with Windows plaforms
+/// This file inbound adapter connects to the <property>SharePath</property> using the user name and password associated with <property>Credentials</property> (see <class>Ens.Config.Credentials</class>)
+/// It extends <class>EnsLib.File.InboundAdapter</class>
 Class ks.lib.file.ba.UNCOutboundAdapter Extends EnsLib.File.OutboundAdapter
 {
 
