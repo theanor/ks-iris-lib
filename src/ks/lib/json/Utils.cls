@@ -1,6 +1,8 @@
+/// JSON utilities
 Class ks.lib.json.Utils
 {
 
+/// returns a %List with all object keys
 ClassMethod ObjectKeyList(object As %DynamicObject) As %List
 {
  #Dim iterator as %Iterator.Object
@@ -12,6 +14,7 @@ ClassMethod ObjectKeyList(object As %DynamicObject) As %List
  return keys
 }
 
+/// returns a %List with all object keys values 
 ClassMethod KeyValuesList(object As %DynamicObject, keys As %List) As %List
 {
  #Dim value As %List
@@ -26,6 +29,7 @@ ClassMethod KeyValuesList(object As %DynamicObject, keys As %List) As %List
  return values
 }
 
+/// format timestamp <b>value</b> to JSON usual date format (ISO-8601, same as XSD date-time type)
 ClassMethod FormatTimeStamp(value As %TimeStamp) As %String [ CodeMode = expression ]
 {
 ##class(%TimeStamp).LogicalToXSD(value)
@@ -55,6 +59,7 @@ ClassMethod ListToArray(list As %ListOfObjects(ELEMENTTYPE="%JSON.Adaptor"), Out
     return sc
 }
 
+/// set <b>result</b> to JSON from XData section <b>xDataName</b> in <b>className</b>
 ClassMethod JSONFromXData(className As %Dictionary.Classname, xDataName As %Dictionary.Identifier, Output result As %DynamicAbstractObject) As %Status
 {
   #Dim xData As %Dictionary.CompiledXData
@@ -77,6 +82,7 @@ ClassMethod JSONFromXData(className As %Dictionary.Classname, xDataName As %Dict
   return sc
 }
 
+/// reads JSON from file 
 ClassMethod JSONFromFile(fileName As %String) As %DynamicAbstractObject
 {
   // use %FromJSONFile if method is available in this version
