@@ -1,6 +1,8 @@
+/// HL7 message utilities
 Class ks.lib.hl7.Utils
 {
 
+/// export <b>message</b> to <b>stream</b> as XML (see <class>EnsLib.HL7.Util.FormatSimpleXMLv2</class>)
 ClassMethod ExportToXML(message As EnsLib.HL7.Message, Output stream As %Stream.Object) As %Status
 {
   #Dim sc as %Status = $$$OK
@@ -17,6 +19,7 @@ ClassMethod ExportToXML(message As EnsLib.HL7.Message, Output stream As %Stream.
   return sc
 }
 
+/// return message imported from XData block <b>xdataName</b> in class <b>classRef</b>, resolving document type (see <method>ks.lib.hl7.Utils.ResolveDocType</method>) using <b>docTypeCategory</b>
 ClassMethod ImportFromXData(classRef As %Dictionary.Classname, xdataName As %String, docTypeCategory As %String, Output sc As %Status) As EnsLib.HL7.Message
 {
 	#Dim ex as %Exception.AbstractException
@@ -46,6 +49,7 @@ ClassMethod ResolveDocType(message As EnsLib.HL7.Message, docTypeCategory As %St
   return $$$OK
 }
 
+/// returns true if none of <b>segment</b> fields have value
 ClassMethod IsEmptySegment(segment As EnsLib.HL7.Segment) As %Boolean
 {
  s str = segment.OutputToString() 
