@@ -1,5 +1,18 @@
-/// abstract archive operation
-/// provides basic behavior for archiving incoming messages into a root directory
+/// This abstract archive operation provides basic behavior for archiving incoming messages to file into a root directory, optionnally creating subfolder(s).
+/// The incoming message is serialized during execution on <method>OnMessage</method>, by calling <method>MessageStream</method> that must be implemented by the concrete operation extending this class.
+/// 
+/// Serialized messages are saved to files under the directory specified by <property>RootDirectory</property>.
+/// 
+/// The archived file name is build using <property>FileNameExpressions</property>, a list of expressions separated by <property>FileNameSeparator</property> that are parsed using <class>Ens.Rule.ExpressionParser</class> and the operation instance as context.
+/// 
+/// The actual subdirectory where the file is archived is build using <property>SubFolderExpressions</property>, a list of expression separated by <property>SubFolderSeparator</property> that are parsed using <class>Ens.Rule.ExpressionParser</class> and the operation instance as context.
+/// The following properties are available during expression parsing :
+/// <ul>
+///   <li><property>Header</property> : incoming message header instance of <class>Ens.MessageHeader</class></li>
+///   <li><property>SessionHeader</property> : incoming message session header instance of <class>Ens.MessageHeader</class></li>
+///   <li><property>Body</property> : incoming message body
+///   <li><property>BodyId</property> : incoming message body identifier
+/// <ul>
 Class ks.lib.archive.bo.AbstractOperation Extends Ens.BusinessOperation [ Abstract ]
 {
 
@@ -47,10 +60,6 @@ Property Body As %RegisteredObject [ Transient ];
 /// contains message body id
 Property BodyId As %String [ Transient ];
 
-/// transient property available during file name and subfolder evaluation
-/// messages tags returned by <Method>MessageStream</Method>
-Property Tags As %List [ MultiDimensional, Transient ];
-
 /// initialize
 Method OnInit() As %Status
 {
@@ -78,14 +87,12 @@ Method OnMessage(request As %Library.Persistent, Output response As %Library.Per
     #Dim fileName As %String
     #Dim directory As %String
     #Dim tag As %String
-    #Dim tags As %List
     #Dim messageStream As %Stream.Object
     
     try {
       $$$TRACE("exporting message to stream")
-      $$$TOE(sc,..MessageStream(..%RequestHeader,request,.messageStream,.tags))
+      $$$TOE(sc,..MessageStream(..%RequestHeader,request,.messageStream))
       if $isobject(messageStream) {
-        s ..Tags = tags
         $$$TOE(sc,..InitializeRequestProperties(request))
 
         $$$TRACE("root directory :"_..RootDirectory)           
@@ -198,7 +205,7 @@ Method EvaluateSubFolderExpressions(request As %Persistent, Output sc As %Status
 }
 
 /// override this to provide message to be archived in <b>messageStream</b>
-Method MessageStream(header As Ens.MessageHeader, message As %Persistent, Output messageStream As %Stream.Object, ByRef messageTags As %List) As %Status [ Abstract ]
+Method MessageStream(header As Ens.MessageHeader, message As %Persistent, Output messageStream As %Stream.Object) As %Status [ Abstract ]
 {
 }
 
