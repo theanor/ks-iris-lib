@@ -1,3 +1,4 @@
+/// XData section utilities
 Class ks.lib.xdata.Utils
 {
 
