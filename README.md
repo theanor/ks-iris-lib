@@ -1,4 +1,4 @@
-[![Gitter](https://img.shields.io/badge/Available%20on-Intersystems%20Open%20Exchange-00b2a9.svg)](https://openexchange.intersystems.com/package/ks-iris-lib)
+![image](https://github.com/user-attachments/assets/018cdc58-fb80-439e-b185-721bb96ff6c9)[![Gitter](https://img.shields.io/badge/Available%20on-Intersystems%20Open%20Exchange-00b2a9.svg)](https://openexchange.intersystems.com/package/ks-iris-lib)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat&logo=AdGuard)](LICENSE)
 
 ## Description
@@ -17,15 +17,18 @@ The purpose of this package is to collect a set of general-purpose utility class
 * ks.lib.test : unit testing utility classes
 * ks.lib.xml : XML utility classes
 
-Documentation and unit tests demoing things are still very sparse, I'm working on it ;-)
-
 Feel free to comment, review and contribute !
 
 [![Quality Gate Status](https://community.objectscriptquality.com/api/project_badges/measure?project=intersystems_iris_community%3Aks-iris-lib&metric=alert_status)](https://community.objectscriptquality.com/dashboard?id=intersystems_iris_community%3Aks-iris-lib)
 
-
 ## Usage
 Once you clone the new repo to your laptop and open VSCode (with the [InterSystems ObjectScript Extension Pack](https://marketplace.visualstudio.com/items?itemName=intersystems-community.objectscript-pack) installed) you'll be able to start development immediately.
+
+## Documentation
+
+Documentation is available in the class reference (see http://localhost:<your web port>/csp/documatic/%25CSP.Documatic.cls) and some examples in the unit tests demoing things.
+
+Both are still sparse, I'm working on it ;-)
 
 ## Prerequisites
 Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Docker desktop](https://www.docker.com/products/docker-desktop) installed.
