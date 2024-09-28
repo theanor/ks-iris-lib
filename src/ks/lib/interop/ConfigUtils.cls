@@ -2,7 +2,16 @@
 Class ks.lib.interop.ConfigUtils
 {
 
-/// Add a new configuration item to production <b>prod</b>
+/// <p>Add a new configuration item to production <b>prod</b></p>
+/// <ul>
+/// <li><b>prod</b> : <class>Ens.Config.Production</class> instance to update</li>
+/// <li><b>name</b> : name of the new configuration item</li>
+/// <li><b>className</b> : class name of the new configuration item </li>
+/// <li><b>item</b> : return the newly created instance of <class>Ens.Config.Item</class></li>
+/// <li><b>enabled</b> : new configuration item enabled attribute (default : 1)</li>
+/// <li><b>poolSize</b> : new configuration item pool size (default : 1)</li>
+/// </ul>
+/// <p>Returns status code</b>
 ClassMethod AddConfigItem(prod As Ens.Config.Production, name As %String, className As %String, ByRef item As Ens.Config.Item, enabled As %Boolean = 1, poolSize As %Integer = 1) As %Status
 {
 	
@@ -23,7 +32,7 @@ ClassMethod AddConfigItem(prod As Ens.Config.Production, name As %String, classN
     return sc
 }
 
-/// set configuration <b>item</b> setting <b>name</b> to <b>value</b>, <b>target</b> must be either "Host" or "Adapter"
+/// <p>set configuration <b>item</b> setting <b>name</b> to <b>value</b>, <b>target</b> must be either "Host" or "Adapter"</p>
 ClassMethod SetSetting(item As Ens.Config.Item, name As %String, value As %String, target As %String) As %Status
 {
 	
@@ -47,8 +56,8 @@ ClassMethod SetSetting(item As Ens.Config.Item, name As %String, value As %Strin
     return sc
 }
 
-/// return value of configuration item <b>name</b> <b>settingName</b> setting
-/// set optional <b>productionName</b> to address non-current productions
+/// <p>return value of configuration item <b>name</b> <b>settingName</b> setting</p>
+/// <p>set optional <b>productionName</b> to address non-current productions</p>
 ClassMethod GetSetting(name As Ens.DataType.ConfigName, settingName As %Dictionary.Identifier, productionName As %Dictionary.Identifier = "", Output status As %Status) As %String
 {
 	#Dim sc as %Status = $$$OK
@@ -74,7 +83,7 @@ ClassMethod GetSetting(name As Ens.DataType.ConfigName, settingName As %Dictiona
 	return result
 }
 
-/// fill pArray with the target config names specified in property of pItem
+/// fill <b>pArray</b> with the target config names specified in property of <b>pItem</b>
 ClassMethod OnGetConnections(Output pArray As %String, pItem As Ens.Config.Item, property As %String = "TargetConfigNames")
 {
 	if pItem.GetModifiedSetting(property,.tValue) {
@@ -82,7 +91,7 @@ ClassMethod OnGetConnections(Output pArray As %String, pItem As Ens.Config.Item,
 	}
 }
 
-/// import lookup table from XData section xdataName in className
+/// import lookup table from XData section <b>xdataName</b> in <b>className</b>
 ClassMethod ImportLUTFromXData(className As %String, xdataName As %String) As %Status
 {
 	#Dim xdata as %Dictionary.CompiledXData
@@ -109,6 +118,7 @@ ClassMethod ImportLUTFromXData(className As %String, xdataName As %String) As %S
     return sc
 }
 
+/// returns instance of <class>Ens.Config.Item</class> with <b>name</b> in production <b>productionName</b>
 ClassMethod GetConfigItem(name As %String, productionName As %String = "", ByRef sc As %Status) As Ens.Config.Item
 {
 	#Dim ex as %Exception.AbstractException
@@ -128,7 +138,7 @@ ClassMethod GetConfigItem(name As %String, productionName As %String = "", ByRef
 	return result
 }
 
-/// returns array of config items using <b>className</b>
+/// set <b>items</b> array of config items using <b>className</b>
 ClassMethod FindItemsOfClass(className As %Dictionary.Classname, Output items As Ens.Config.Item, productionName As %Dictionary.Classname = "") As %Status
 {
 	#Dim sc as %Status = $$$OK
@@ -155,22 +165,8 @@ ClassMethod FindItemsOfClass(className As %Dictionary.Classname, Output items As
 	return sc
 }
 
-ClassMethod HeaderSourceConfigName(headerId As %Integer) As %String
-{
-	#Dim header as Ens.MessageHeader
-
-	s header = ##class(Ens.MessageHeader).%OpenId(headerId)
-	return header.SourceConfigName
-}
-
-ClassMethod HeaderTargetConfigName(headerId As %Integer) As %String
-{
-	#Dim header as Ens.MessageHeader
-
-	s header = ##class(Ens.MessageHeader).%OpenId(headerId)
-	return header.TargetConfigName
-}
-
+/// <p>Adds configuration item instances have <b>category</b> as Category to <b>items</b> list.</p>
+/// <p>List is created if undefined.</b>
 ClassMethod GetCategoryItems(productionName As %Dictionary.Classname, category As %String, Output items As %ListOfObjects(ELEMENTTYPE="Ens.Config.Item")) As %Status
 {
 	#Dim sc as %Status
@@ -196,6 +192,8 @@ ClassMethod GetCategoryItems(productionName As %Dictionary.Classname, category A
 	return sc
 }
 
+/// <p>Merges ^IRIS.Msg("EnsColumns") from source database mapped by the current namespace (usually, ENSLIB, which is usually readonly) into the current database, and modify target name space mappings to map EnsColumns to current database.</p>
+/// <p>After the merge, as the global is now in target name space global database, it can be modified, for example using <method>SetSettingsMessages</method>.
 ClassMethod MergeEnsColumns(targetNameSpace As %Dictionary.Identifier = {$namespace}) As %Status
 {
   new $namespace
@@ -235,8 +233,9 @@ ClassMethod MergeEnsColumns(targetNameSpace As %Dictionary.Identifier = {$namesp
   return sc
 }
 
-/// Upload messages (display names in management portal) for settings from xdataName in compiledClass into ^IRIS.Msg
-/// Expects messages as JSON in xdata
+/// <p>Upload messages (display names in management portal) for settings from xdataName in compiledClass into ^IRIS.Msg</p>
+/// <p>Expects messages as JSON in xdata :</p>
+/// <pre>
 /// {
 ///   "APropertyName" : {
 ///     "en" : "english text",
@@ -245,6 +244,7 @@ ClassMethod MergeEnsColumns(targetNameSpace As %Dictionary.Identifier = {$namesp
 ///   },
 ///   ...
 /// }
+/// </pre>
 ClassMethod SetSettingsMessages(compiledClass As %Dictionary.CompiledClass, xdataName As %String = "SettingsMessages") As %Status
 {
     #Dim sc as %Status
