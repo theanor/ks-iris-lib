@@ -1,6 +1,8 @@
+/// Business service utilities
 Class ks.lib.interop.ServiceUtils
 {
 
+/// Sends <b>message</b> to business service named <b>configName</b> in current namespace production, calling service <b>ProcessInput()</b> method
 ClassMethod TriggerService(configName As %String, message As %RegisteredObject) As %Status
 {
 	 #Dim sc as %Status
@@ -20,6 +22,8 @@ ClassMethod TriggerService(configName As %String, message As %RegisteredObject) 
 	 return sc
 }
 
+/// <p>send <b>request</b> asynchronously to all targets in the comma-separated list of configuration item names <b>targetConfigNames, by passing 
+/// repeatedly invoking <b>service.SendRequestAsync()</b>, passing optional <b>description</b> 
 ClassMethod SendRequestAsync(service As Ens.BusinessService, targetConfigNames As %String, request As Ens.MessageBody, description As %String = "") As %Status
 {
  	#Dim sc,srStatus as %Status
