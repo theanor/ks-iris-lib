@@ -1,3 +1,4 @@
+/// FTP inbound adapter that let you specifiy which <property>LocalInterface</property> is used to connect the server
 Class ks.lib.ftp.ba.InboundAdapter Extends EnsLib.FTP.InboundAdapter
 {
 
