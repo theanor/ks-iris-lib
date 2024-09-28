@@ -26,7 +26,7 @@ Once you clone the new repo to your laptop and open VSCode (with the [InterSyste
 
 ## Documentation
 
-Documentation is available in the class reference (see http://localhost:your web port/csp/documatic/%25CSP.Documatic.cls) and some examples in the unit tests demoing things.
+Documentation is available in the class reference (see http://localhost:your_web_port/csp/documatic/%25CSP.Documatic.cls) and some examples in the unit tests.
 
 Both are still sparse, I'm working on it ;-)
 
