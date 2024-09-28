@@ -1,3 +1,5 @@
+/// HL7 file outbound adapter, using <class>ks.lib.file.ba.UNCOutboundAdapter</class>
+/// This adapter also adds expression parsing to <method>CreateFilename</method> : see <method>ks.lib.hl7.Utils.ParseExpressions</method>
 Class ks.lib.hl7.ba.FileOutboundAdapter Extends ks.lib.file.ba.UNCOutboundAdapter
 {
 
