@@ -1,4 +1,4 @@
-/// stack of data types
+/// Stack of data types
 Class ks.lib.collections.StackOfDataTypes Extends %SerialObject
 {
 
@@ -17,14 +17,14 @@ Method Clear() As %Status
 	Quit $$$OK
 }
 
-/// Push new value on the stack
+/// Push <b>value</b> on the stack
 Method Push(value As %String) As %Status
 {
     s ..Stack($increment(i%Stack)) = value
     return $$$OK
 }
 
-/// Pop value from the stack
+/// Returns value popped from the stack or return <b>emptyValue</b> (default is an empty string) if stack is empty
 Method Pop(emptyValue As %String = "") As %String
 {
     return:('$data(i%Stack)) emptyValue
@@ -33,12 +33,14 @@ Method Pop(emptyValue As %String = "") As %String
     return value
 }
 
+/// implements <class>%Library.SerialObject</class> serialization
 Method %GetSerial(force As %Integer = 0) As %String
 {
 	Set list="",key="" For  Set key=$order(i%Stack(key)) Quit:key=""  Set list=list_$listbuild(i%Stack(key))
 	Quit list
 }
 
+/// implements <class>%Library.SerialObject</class> deserialization
 Method %SetSerial(serialized As %String) As %Status
 {
     d ..Clear()
