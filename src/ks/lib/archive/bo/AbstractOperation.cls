@@ -1,12 +1,12 @@
-/// This abstract archive operation provides basic behavior for archiving incoming messages to file into a root directory, optionnally creating subfolder(s).
-/// The incoming message is serialized during execution on <method>OnMessage</method>, by calling <method>MessageStream</method> that must be implemented by the concrete operation extending this class.
+/// <p>This abstract archive operation provides basic behavior for archiving incoming messages to file into a root directory, optionnally creating subfolder(s).
+/// The incoming message is serialized during execution on <method>OnMessage</method>, by calling <method>MessageStream</method> that must be implemented by the concrete operation extending this class.</p>
 /// 
-/// Serialized messages are saved to files under the directory specified by <property>RootDirectory</property>.
+/// <p>Serialized messages are saved to files under the directory specified by <property>RootDirectory</property>.</p>
 /// 
-/// The archived file name is build using <property>FileNameExpressions</property>, a list of expressions separated by <property>FileNameSeparator</property> that are parsed using <class>Ens.Rule.ExpressionParser</class> and the operation instance as context.
+/// <p>The archived file name is build using <property>FileNameExpressions</property>, a list of expressions separated by <property>FileNameSeparator</property> that are parsed using <class>Ens.Rule.ExpressionParser</class> and the operation instance as context.</p>
 /// 
-/// The actual subdirectory where the file is archived is build using <property>SubFolderExpressions</property>, a list of expression separated by <property>SubFolderSeparator</property> that are parsed using <class>Ens.Rule.ExpressionParser</class> and the operation instance as context.
-/// The following properties are available during expression parsing :
+/// <p>The actual subdirectory where the file is archived is build using <property>SubFolderExpressions</property>, a list of expression separated by <property>SubFolderSeparator</property> that are parsed using <class>Ens.Rule.ExpressionParser</class> and the operation instance as context.
+/// The following properties are available during expression parsing :</p>
 /// <ul>
 ///   <li><property>Header</property> : incoming message header instance of <class>Ens.MessageHeader</class></li>
 ///   <li><property>SessionHeader</property> : incoming message session header instance of <class>Ens.MessageHeader</class></li>
