@@ -1,6 +1,8 @@
-Class ks.lib.object.Utils 
+/// Object utilities
+Class ks.lib.object.Utils
 {
 
+/// returns true if <b>className</b> is abstract
 ClassMethod IsAbstract(className As %Dictionary.Classname, Output sc As %Status) As %Boolean
 {
   
@@ -23,6 +25,7 @@ ClassMethod IsAbstract(className As %Dictionary.Classname, Output sc As %Status)
   return result
 }
 
+/// returns true if <b>property</b> of <b>className</b> extends <b>propertyClassName</b>
 ClassMethod PropertyExtends(className As %Dictionary.Classname, property As %Dictionary.Identifier, propertyClassName As %Dictionary.Classname, Output sc As %Status) As %Boolean
 {
     #Dim ex as %Exception.AbstractException
@@ -41,6 +44,7 @@ ClassMethod PropertyExtends(className As %Dictionary.Classname, property As %Dic
     return result
 }
 
+/// returns <b>className</b> <b>property</b> type
 ClassMethod GetPropertyType(className As %Dictionary.Classname, property As %Dictionary.Identifier, Output sc As %Status) As %Dictionary.Classname
 {
     #Dim ex as %Exception.AbstractException
