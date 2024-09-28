@@ -1,3 +1,4 @@
+/// Extends <class>EnsLib.File.PassthroughOperation</class>, adding optional semaphore file output
 Class ks.lib.file.bo.Operation Extends (Commons, EnsLib.File.PassthroughOperation)
 {
 

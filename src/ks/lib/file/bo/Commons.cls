@@ -1,5 +1,6 @@
 Include Ensemble
 
+/// common members for file operations
 Class ks.lib.file.bo.Commons Extends %RegisteredObject [ Abstract ]
 {
 

@@ -6,8 +6,10 @@ Class ks.lib.file.ba.UNCInboundAdapter Extends EnsLib.File.InboundAdapter
 
 Parameter SETTINGS = "Credentials:Basic:credentialsSelector,DeleteFromServer,SortedBy";
 
+/// Credentials used to access share
 Property Credentials As %String(MAXLEN = 64);
 
+/// sort order for file processing
 Property SortedBy As %String(VALUELIST = ",DateModified,ItemName,Name,Size");
 
 Method OnInit() As %Status

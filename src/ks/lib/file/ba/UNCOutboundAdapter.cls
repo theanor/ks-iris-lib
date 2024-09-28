@@ -6,8 +6,10 @@ Class ks.lib.file.ba.UNCOutboundAdapter Extends EnsLib.File.OutboundAdapter
 
 Parameter SETTINGS = "Credentials:Basic:credentialsSelector,SharePath:Basic";
 
+/// Credentials used to access share
 Property Credentials As %String;
 
+/// Output UNC share path
 Property SharePath As %String(MAXLEN = 128);
 
 Method OnInit() As %Status

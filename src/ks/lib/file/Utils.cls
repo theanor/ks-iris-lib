@@ -1,6 +1,8 @@
+/// File utility methods
 Class ks.lib.file.Utils
 {
 
+/// Establish connection (Windows secure channel) with <b>UNCPath>, using credentials <b>username</b> and <b>password</b>
 ClassMethod ConnectUNCPathAs(UNCPath As %String, username As %String, password As %String) As %Status
 {
 	
