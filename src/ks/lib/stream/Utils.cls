@@ -1,3 +1,4 @@
+/// stream utilities
 Class ks.lib.stream.Utils Extends %RegisteredObject
 {
 
