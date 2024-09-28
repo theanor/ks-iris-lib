@@ -2,9 +2,9 @@
 Class ks.lib.purge.Utils
 {
 
-/// Purges all message bodies associated with sessionId and if purgeHeaders is set, purge headers too.
-/// <b>purged</b> returns the total count of items successfully purged, and the count by class name in the first subscript
-/// Stops and returns error status if any error occurs during purge.
+/// <p>Purges all message bodies associated with sessionId and if purgeHeaders is set, purge headers too.</p>
+/// <p><b>purged</b> returns the total count of items successfully purged, and the count by class name in the first subscript.</p>
+/// <p>Stops and returns error status if any error occurs during purge.</p>
 ClassMethod PurgeSessionMessageBodies(sessionId As %Integer, Output purged As %Integer, purgeHeaders As %Boolean = 0, noLock As %Boolean = 1) As %Status
 {
   #Dim sc as %Status
@@ -35,12 +35,12 @@ ClassMethod PurgeSessionMessageBodies(sessionId As %Integer, Output purged As %I
   return sc
 }
 
-/// Purges all sessions originating from <b>sourceConfigName</b> in the current namespace interoperability production, 
-/// keeping only the sessions that are less or <b>daysToKeep</b> day old, 
-/// <b>purged</b> returns the total count of items successfully purged, and the count by class in the first subscript
-/// Stops and returns error status if any error occurs during purge.
-/// if <b>noDataMode</b> is 1 (default is 0), sets autocommit to false and no transaction modes, resulting in only kills being registered in journal (if journaling is enabled) and no data
-/// !!! CAVEAT : use noDataMode=1 only if you really don't need to restore the data  from the journal. This is suitable only in special situations (e.g. numerous big messages to be purged)
+/// <p>Purges all sessions originating from <b>sourceConfigName</b> in the current namespace interoperability production, 
+/// keeping only the sessions that are less or <b>daysToKeep</b> day old.</p>
+/// <p><b>purged</b> returns the total count of items successfully purged, and the count by class in the first subscript
+/// Stops and returns error status if any error occurs during purge.</p>
+/// <p>If <b>noDataMode</b> is 1 (default is 0), sets autocommit to false and no transaction modes, resulting in only kills being registered in journal (if journaling is enabled) and no data</p>
+/// <p>!!! <b>CAVEAT</b> : use noDataMode=1 only if you really don't need to restore the data  from the journal. This is suitable only in special situations (e.g. numerous big messages to be purged)</p>
 ClassMethod PurgeSessions(sourceConfigName As Ens.DataType.ConfigName, Output purged As %String, daysToKeep As %Integer = 7, purgeHeaders As %Boolean = 0, noLock As %Boolean = 1, noDataMode As %Boolean = 0) As %Status
 {
   #Dim sc as %Status
