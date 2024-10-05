@@ -3,7 +3,7 @@
 Class ks.lib.hl7.ba.FileOutboundAdapter Extends ks.lib.file.ba.UNCOutboundAdapter
 {
 
-Method CreateFilename(pFileName As %String, pSpec As %String, pIsVMS As %Boolean, pDirectory As %String, pLocal As %Boolean) As %String
+Method CreateFilename(ByRef pFileName As %String, ByRef pSpec As %String, ByRef pIsVMS As %Boolean, ByRef pDirectory As %String, ByRef pLocal As %Boolean) As %String
 {
 	#Dim sc as %Status
 	#Dim ex as %Exception.AbstractException
