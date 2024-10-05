@@ -1,13 +1,12 @@
 ARG IMAGE=intersystemsdc/irishealth-community
 ARG VERSION=latest
-ARG VERSION=2024.1
+#ARG VERSION=2024.1
 FROM $IMAGE:$VERSION
 
 USER root
 
 WORKDIR /opt/irisbuild
 RUN chown -R ${ISC_PACKAGE_MGRUSER}:${ISC_PACKAGE_IRISGROUP} /opt/irisbuild
-USER ${ISC_PACKAGE_MGRUSER}
 
 USER ${ISC_PACKAGE_MGRUSER}
 
