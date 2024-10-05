@@ -1,5 +1,5 @@
  zn "%SYS"
- Do ##class(Security.Users).UnExpireUserPasswords("*")
+ d ##class(Security.Users).UnExpireUserPasswords("*")
 
  s nameSpace = "USER"
  d ##class(%Library.EnsembleMgr).EnableNamespace(nameSpace)
