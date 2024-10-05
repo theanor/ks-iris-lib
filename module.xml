@@ -15,7 +15,7 @@
       <SystemRequirements Version=">=2023.1" Interoperability="enabled" />
       <Resource Name="ks.PKG"/>
       <SourcesRoot>src</SourcesRoot>
-      <UnitTest Name="/test/" Package="ut" Phase="test"/>
+      <UnitTest Name="/test/src" Package="ut" Phase="test"/>
     </Module>
   </Document>
 </Export>

@@ -8,12 +8,12 @@ ClassMethod DebugTestCase(className As %Dictionary.Classname, testMethod As %Str
 
 ClassMethod RuntimeDirectory() As %String [ CodeMode = expression ]
 {
-##class(%File).SubDirectoryName(^UnitTestRoot, "runtime")
+$get(^UnitTestRuntimeRoot,##class(%File).SubDirectoryName(^UnitTestRoot, "../runtime"))
 }
 
 ClassMethod TestResourceDirectory() As %String [ CodeMode = expression ]
 {
-$get(^UnitTestResourcesRoot,##class(%File).SubDirectoryName(^UnitTestRoot, "resource"))
+$get(^UnitTestResourcesRoot,##class(%File).SubDirectoryName(^UnitTestRoot, "../resource"))
 }
 
 }

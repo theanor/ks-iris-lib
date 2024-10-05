@@ -12,7 +12,6 @@ USER ${ISC_PACKAGE_MGRUSER}
 
 COPY src src
 COPY module.xml module.xml
-COPY test test
 COPY iris.script iris.script
 
 RUN <<EOF

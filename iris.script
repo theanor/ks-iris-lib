@@ -9,8 +9,9 @@
  s $namespace = nameSpace
 
  s ^RepositoryRoot="/irisrun/repo"  
- s ^UnitTestResourcesRoot=^RepositoryRoot_"/resource/test"
- s ^UnitTestRoot=^RepositoryRoot_"/test"
+ s ^UnitTestResourcesRoot=^RepositoryRoot_"/test/resource"
+ s ^UnitTestRuntimeRoot=^RepositoryRoot_"/test/runtime"
+ s ^UnitTestRoot=^RepositoryRoot_"/test/src"
 
  zpm "load /opt/irisbuild":1
 

@@ -6,7 +6,7 @@ Parameter PRODUCTION = "dummy";
 Method %OnNew(initvalue) As %Status [ Internal ]
 {
 	set s = ##super(initvalue) if 's quit s
-	set i%MainDir = ##class(%File).SubDirectoryName(^UnitTestRoot, "runtime")
+	set i%MainDir = ##class(ks.lib.test.Runner).RuntimeDirectory()
 	set i%HL7InputDir = ..SubMainDir("HL7/In")
 	set i%HL7OutputDir = ..SubMainDir("HL7/Out")
 	set i%HL7WorkDir = ..SubMainDir("HL7/Work")
