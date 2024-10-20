@@ -1,6 +1,6 @@
 ARG IMAGE=intersystemsdc/irishealth-community
+ARG VERSION=2024.1
 ARG VERSION=latest
-#ARG VERSION=2024.1
 FROM $IMAGE:$VERSION
 
 USER root
