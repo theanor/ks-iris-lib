@@ -18,7 +18,7 @@
       }
     },    
     "objectscript.unitTest.relativeTestRoots": [
-      "test"
+      "test/src"
     ]
 
 }
