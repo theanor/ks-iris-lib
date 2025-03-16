@@ -40,7 +40,7 @@ Method Format(fmt As %String) As %String
 /// add days property method
 Method AddDays(days As %Integer) As DateTime [ CodeMode = expression ]
 {
-..ValuePlusDays(%val,days)
+##class(DateTime).ValuePlusDays(%val,days)
 }
 
 /// add <b>days</b> to <b>value</b>
@@ -70,7 +70,7 @@ ClassMethod ValuePlusSeconds(value As DateTime, seconds As %Integer) As DateTime
 /// add seconds property method
 Method AddSeconds(seconds As %Integer) As DateTime [ CodeMode = expression ]
 {
-..ValuePlusSeconds(%val,seconds)
+##class(DateTime).ValuePlusSeconds(%val,seconds)
 }
 
 /// returns current local date
