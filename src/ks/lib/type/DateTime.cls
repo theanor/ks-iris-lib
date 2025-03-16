@@ -1,5 +1,5 @@
 /// (yet another ;-) date-time data type
-Class ks.lib.type.DateTime Extends %RegisteredObject
+Class ks.lib.type.DateTime Extends %TimeStamp
 {
 
 Parameter XMLTIMEZONE = "IGNORE";
