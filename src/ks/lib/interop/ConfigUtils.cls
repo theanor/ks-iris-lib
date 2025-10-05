@@ -245,7 +245,7 @@ ClassMethod MergeEnsColumns(targetNameSpace As %Dictionary.Identifier = {$namesp
 ///   ...
 /// }
 /// </pre>
-ClassMethod SetSettingsMessages(compiledClass As %Dictionary.CompiledClass, xdataName As %String = "SettingsMessages") As %Status
+ClassMethod SetSettingsMessages(compiledClassName As %Dictionary.Classname, xdataName As %String = "SettingsMessages") As %Status
 {
     #Dim sc as %Status
     #Dim ex as %Exception.AbstractException
@@ -261,16 +261,16 @@ ClassMethod SetSettingsMessages(compiledClass As %Dictionary.CompiledClass, xdat
     
     s sc = $$$OK
     try {
-        s xdata = ##class(%Dictionary.CompiledXData).IDKEYOpen(compiledClass.Name,xdataName)        
+        s xdata = ##class(%Dictionary.CompiledXData).IDKEYOpen(compiledClassName,xdataName)        
         if $isobject(xdata) && (xdata.MimeType="application/json") && $isobject(xdata.Data) {          
           s msgs = ##class(%DynamicAbstractObject).%FromJSON(xdata.Data)
           if $isobject(msgs) {
-            s settingsParameter = ##class(%Dictionary.CompiledParameter).IDKEYOpen(compiledClass.Name,"SETTINGS")
+            s settingsParameter = ##class(%Dictionary.CompiledParameter).IDKEYOpen(compiledClassName,"SETTINGS")
             s settings = $listfromstring(settingsParameter.Default,",")
             s ptr = 0
             while $listnext(settings,ptr,setting) {
               s propName = $piece(setting,":",1)
-              s prop = ##class(%Dictionary.CompiledProperty).IDKEYOpen(compiledClass.Name,propName)
+              s prop = ##class(%Dictionary.CompiledProperty).IDKEYOpen(compiledClassName,propName)
               if $isobject(prop) {
                 s settingMsgs = msgs.%Get(propName)
                 if $isobject(settingMsgs) {
@@ -278,7 +278,8 @@ ClassMethod SetSettingsMessages(compiledClass As %Dictionary.CompiledClass, xdat
                     while langIterator.hasNext() {                        
                         s langMsg = langIterator.next()
                         s lang = langMsg.key
-                        s text = langMsg.value    
+                        s text = langMsg.value  
+						w "setting ",lang," ",propName," ",text,!  
                         s ^IRIS.Msg("EnsColumns",lang,propName)=text
                     }
                 }
