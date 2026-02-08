@@ -7,16 +7,6 @@ Parameter DEFAULTWORKINGHOURSSPEC = "STOP:WEEK-*-01T17:00:00,START:WEEK-*-01T08:
 /// default country code, override this to force it 
 Parameter DEFAULTCOUNTRYCODE = {$zconvert(##class(%SYS.NLS.Locale).%New().CountryAbbr,"L")};
 
-/// returns true if <b>dateTime</b> (default value "" is current datetime) is within schedule defined by <b>scheduleSpec</b>
-/// <deprecated>use ##class(Ens.Util.FunctionSet).Schedule()</deprecated>
-ClassMethod WithinSchedule(scheduleSpec As %String, dateTime As %DateTime = "") As %Boolean
-{
-  #Dim currentDateTime As %String
-  s currentDateTime = ##class(%DateTime).LogicalToXSD(dateTime)
-  s sc = ##class(Ens.ScheduleHandler).ParseScheduleSpec(scheduleSpec,.currentState,.nextEventDateTime,.nextEventAction,currentDateTime)
-  return $case(currentState,"START":1,:0)
-}
-
 /// returns easter date for <b>year</b> in <b>fmt</b> format (defaults to ISO 8601 date)
 ClassMethod EasterDate(year As %Integer, fmt As %String = "%q(2)") As %String
 {
